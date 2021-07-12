@@ -1,0 +1,83 @@
+{
+    "users":{
+        "um3maru@gmail.com": {
+            "nickName": "호두마루",
+            "name":"엄산마루",
+            "grade":3,
+            "rating":4,
+            "win": 3,
+            "lose": 2,
+            "rank": "bronze",
+            "status": null
+        },
+        "um3maru@kaist.ac.kr": {
+            "nickName": "체리마루",
+            "name":"엄마루산",
+            "grade":3,
+            "rating":2,
+            "win": 3,
+            "lose": 2,
+            "rank": "sliver",
+            "status": "onGame"
+        }
+    },
+    "userRecords": {
+        "um3maru@gmail.com":{
+            "solved": [1, 2],
+            "failed": [3, 4],
+            "tried": [1, 2, 3, 4]
+        },
+        "um3maru@kaist.ac.kr":{
+            "solved": [1, 2],
+            "failed": [3, 4],
+            "tried": [1, 2, 3, 4]
+        }
+    },
+    "matches": {
+        "auto generated key 1":{
+            "playerA": "um3maru@gamil.com",
+            "playerB": "um3maru@kaist.ac.kr",
+            "scoringA": ["XO", "O", "O", null, null],
+            "scoringB": ["XO", "O", "O", null, null],
+            "questionSet": [1, 2, 3, 4, 5],
+            "startTime": "timestamp"           
+        }
+    },
+    "rooms": {
+        "auto generated key 1":{
+            "playerA": {
+                "ID": "um3maru@gamil.com",
+                "status": "unReady"
+            },
+            "playerB": null,
+            "status": "wait"
+        }
+    },
+    "questions":{
+        "0":{
+            "category": "subjective",
+            "answer": 128
+        },
+        "1":{
+            "category": "multi_choice",
+            "answer": 3
+        },
+        "2":{
+            "category": "multi_choice",
+            "answer": 3
+        },
+        "3":{
+            "category": "multi_choice",
+            "answer": 3
+        },
+        "4":{
+            "category": "multi_choice",
+            "answer": 3
+        },
+        "5":{
+            "category": "multi_choice",
+            "answer": 3
+        }
+    }
+
+}

@@ -1,0 +1,29 @@
+{
+    "user_info":{
+        "placehorder":0
+    },
+    "user_status":{
+        "placehorder":0
+    },
+    "user_interaction":{
+        "placehorder":0
+    },
+    "question_info":{
+        "placehorder":0
+    },
+    "matching_info":{
+        "bronze":{
+            "placehorder":0
+        },
+        "silver":{
+            "placehorder":0
+        },
+        "gold":{
+            "placehorder":0
+        }
+    },
+    "game_list":{
+        "placehorder":0
+    }
+
+}

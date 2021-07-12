@@ -1,0 +1,66 @@
+{
+    "userDB":{
+        "orbi_Ah": {
+            "name": "홍길동",
+            "school": "OO고",
+            "grade": 3,
+            "rating": 1,
+            "connected": 0        
+        },
+        "um3maru": {
+            "name": "김철수",
+            "school": "KAIST",
+            "grade": 3,
+            "rating": 1,
+            "connected": 0 
+        }
+    },
+
+    "questionDB":{
+        "0":{
+            "src":"http://localhost:3000/question1.png",
+            "choices":[10, 25, 50, 100, 225],
+            "answer": 2
+        },
+        "1":{
+            "src":"http://localhost:3000/question1.png",
+            "choices":[1, 2, 3, 4, 5],
+            "answer": 3
+        },
+        "2":{
+            "src":"http://localhost:3000/question1.png",
+            "choices":[1, 2, 3, 4, 5],
+            "answer": 3
+        },
+        "3":{
+            "src":"http://localhost:3000/question1.png",
+            "choices":[12, 13, 19, 23, 48],
+            "answer": 4
+        },
+        "4":{
+            "src":"http://localhost:3000/question1.png",
+            "choices":[12, 36, 72, 128, 144],
+            "answer": 3
+        }
+    },
+
+    "matchDB":{
+        "match1":{
+            "startTime": {
+                "hour": 20,
+                "minute": 0
+            },
+            "playerA": {
+                "ID": "orbi_Ah",
+                "name": "sbma1114",
+                "scoring": [null, null, null, null, null]
+            },
+            "playerB": {
+                "ID": "um3maru",
+                "name": "꾸깃꾸깃",
+                "scoring": [null, null, null, null, null]
+            },
+            "questionSet":[0, 1, 2, 3]
+        }
+    }
+}
