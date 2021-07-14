@@ -7,3 +7,11 @@
 [0m2021.07.12 14:25:27 INFO  time: initialize in 2.99s[0m
 [0m2021.07.12 14:25:43 WARN  Build server is not auto-connectable.[0m
 [0m2021.07.12 14:25:43 WARN  no build tool detected in workspace 'C:\Users\user\Desktop\final\mvp'. The most common cause for this problem is that the editor was opened in the wrong working directory, for example if you use sbt then the workspace directory should contain build.sbt. [0m
+7¿ù 12, 2021 10:09:31 ¿ÀÈÄ org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+Á¤º¸: Unsupported notification method: $/setTrace
+7¿ù 13, 2021 4:49:57 ¿ÀÈÄ org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+Á¤º¸: Unsupported notification method: $/setTrace
+7¿ù 13, 2021 4:49:58 ¿ÀÈÄ org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+Á¤º¸: Unsupported notification method: $/setTrace
+7¿ù 14, 2021 4:24:54 ¿ÀÀü org.eclipse.lsp4j.jsonrpc.services.GenericEndpoint notify
+Á¤º¸: Unsupported notification method: $/setTrace

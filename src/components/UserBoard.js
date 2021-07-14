@@ -1,59 +1,85 @@
 import React, {useState, useEffect} from 'react'
 import ScoringUnit from './ScoringUnit'
 import { Grid, Segment } from 'semantic-ui-react'
+import dbInit from '../firebase/databaseInit';
 
-const UserBoard = ({userInfo, gid, uid, db}) => {
-    const [scoring, setScoring] = useState([0 ,0 ,0, 0, 0])
-    const [sum, setSum] = useState(0)
-    let scoringBoard = null
+const NUM_QUESTION = 5;
+
+const db = dbInit();
+
+function simpleListGenerator(item, n) {
+    const outputList = [];
+    for (let i=0; i<n; i++) outputList.push(item);
+    return outputList;
+}
+
+const UserBoard = ({gid, rank, userInfo}) => {
+    const [scoring, setScoring] = useState(simpleListGenerator(0, NUM_QUESTION));
+    const [sum, setSum] = useState(0);
+    const [uid, setUid] = useState();
+
+    const nickName = userInfo.nick_name || "ooo";
+    const school = userInfo.school || "ooo";
+    const grade = userInfo.grade || 0;
+    const rating = userInfo.rating || 0;
+
+    const scoringBoard = scoring.map(
+        (state, qNum)=> <ScoringUnit state={state} qNum={qNum}/>
+    );
+
+    useEffect(() => {
+        if (userInfo) {
+            setUid(userInfo.id);
+        }
+    }, [userInfo]);
     
     useEffect(() => {
-        const ref = db.ref('game_list/bronze/' + gid + '/scoring/' + uid)
+        if(!uid) return;
+        const ref = db.ref(`game_info/${rank}/${gid}/scoring_object/${uid}`);
         const listner = ref.on('value', (data) =>{
-            if(!data.val()) return
-            const current = Object.values(data.val())
-            setScoring(Object.values(current))
+            if (data.exists()){
+                const current = Object.values(data.val());
+                setScoring(current);
+            }
         });
         return () => {
-            ref.off('value', listner)
-        }
-    }, [gid, uid])
+            ref.off('value', listner);
+        };
+    }, [uid]);
 
     useEffect(() => {
-        if(!gid || !uid) return
-        let sum = 0
-        scoring.map((score)=>{
-            while(score){
-                if(score[0]==="O") {
-                    sum+=4
-                    break
-                }else {
-                    sum -= 1
-                    score = score.slice(1)
-                }
-            }
-        })
-        if(sum<0) sum = 0
-        setSum(sum)
-        db.ref('game_list/bronze/' + gid + '/score/' + uid).set({total: sum, timeAt: Date.now()})
-    }, [scoring])
+        const sum = (function(scoring) {
+            let sum = 0;
+            scoring.map((score)=>{
+                if (!score) return;
+                const correctCount = score.split("O").length-1;
+                const wrongCount = score.split("X").length-1;
+                sum += Math.max(
+                    4*correctCount - wrongCount, 0
+                );
+            })
+            if(sum<0) sum = 0
+            return sum;
+        })(scoring);
+        setSum(sum);
+    }, [scoring]);
 
-    if(scoring){
-        scoringBoard = scoring.map(
-            (state, qNum)=> <ScoringUnit state={state} qNum={qNum}/>
-        )
-    }
+    useEffect(() => {
+        if (!uid) return;
+        db.ref(`game_info/${rank}/${gid}/score/${uid}`)
+                .set({total: sum, timeAt: Date.now()});
+    }, [sum, uid]);
 
     return (
         <div>
             <Segment color='grey'>
                 <Grid textAlign='center'>
                     <Grid.Row>
-                        <h2>{userInfo.name}</h2>
+                        <h2>{nickName}</h2>
                     </Grid.Row>
                     <Grid.Row>
                         <h4>
-                            {`${userInfo.school} / ${userInfo.grade}학년 / 모의고사 ${userInfo.rating}등급`}
+                            {`${school} / ${grade}학년 / 모의고사 ${rating}등급`}
                         </h4>
                     </Grid.Row>
                 </Grid>
@@ -68,4 +94,4 @@ const UserBoard = ({userInfo, gid, uid, db}) => {
     )
 }
 
-export default UserBoard
+export default UserBoard;
