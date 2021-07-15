@@ -9,6 +9,7 @@ import dbInit from '../firebase/databaseInit';
 
 const SIGNUP = 0;
 const LOGIN = 1;
+
 const auth = authInit();
 const db = dbInit();
 
@@ -24,8 +25,6 @@ const AuthPage = () => {
   }
 
   const onSignUp = (signUpInfo) => {
-    // TODO: controlled state
-		console.log(signUpInfo)
     const [
 			id, 
 			password, 
@@ -37,35 +36,44 @@ const AuthPage = () => {
 		] = signUpInfo;
 
 		for ( var i=0; i<signUpInfo.length; i++ ) {
+			// check if every form is completed
 			if (!signUpInfo[i]) {
 				setMessage("Please fill in all forms.");
 				return;
 			}
 		}
-
+		// rating 1: rank3
+		// rating 2: rank2
+		// rating 3~9: rank1
+		const rank = (function(rating) {
+			if (rating <= 3){
+				return 4-rating;
+			}else return 1;
+		})(rating);
 		auth.createUserWithEmailAndPassword(id, password)
 			.then((userCredential) => {
-					// Sign in   
-					let uid = userCredential.user.uid
-					db.ref('user_info/' + uid).set({
-							id: uid,
-							name: name, 
-							nick_name: nickName, 
-							school: school,
-							grade: grade,
-							rating: rating,
-							rank: rating,
-							status_object: {
-								status: 'isWaiting'
-							},
-							current: {win: 0, lose:0},
-							total: {win: 0, lose: 0},
-					});
+				// sign in success
+				let uid = userCredential.user.uid
+				db.ref('user_info/' + uid).set({
+					id: uid,
+					name: name, 
+					nick_name: nickName, 
+					school: school,
+					grade: grade,
+					rating: rating,
+					rank: rank,
+					status_object: {
+						status: 'Home',
+						rank: rank
+					}, // used for routing; Home -> Watching -> Playing -> End 
+					current: {win: 0, lose:0}, // record of current season
+					total: {win: 0, lose: 0},
+				});
 
-					db.ref('user_interaction/' + uid).set([0]);
+				db.ref('user_interaction/' + uid).set([0]);
 			})
 			.catch((error) => {
-					setMessage(error.message);
+				setMessage(error.message);
 			});
 
 	};

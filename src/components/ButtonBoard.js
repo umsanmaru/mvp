@@ -1,6 +1,12 @@
 import React, { useState } from 'react'
 import { Grid, Container, Divider, Segment, Icon } from 'semantic-ui-react'
 
+const rankMap = {
+	1: "bronze",
+	2: "silver",
+	3: "gold"
+}
+
 const ButtonBoard = ({boardName, onClick, text, userInfo, icon}) => {   
     const [hover, setHover] = useState(false)
 
@@ -8,7 +14,7 @@ const ButtonBoard = ({boardName, onClick, text, userInfo, icon}) => {
     const total = userInfo.total || {win: 0, lose: 0};
     const boardText = (function(boardName) {
         if (boardName === 'rank') {
-            const rank = userInfo.rank || "ooo";
+            const rank = rankMap[userInfo.rank] || "ooo";
             return `현재 등급: ${rank}`;
         } else if (boardName === 'nick_name') {
             const nickName = userInfo.nick_name || "ooo";

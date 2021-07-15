@@ -90,9 +90,7 @@ export default class Rules extends Component {
             </Accordion.Content>
           </Accordion>
         </Accordion.Content>
-          
       </Accordion>
-      
     )
   }
 }

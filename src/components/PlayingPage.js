@@ -17,20 +17,23 @@ const PlayingPage = ({uid, gid, rank}) => {
   const [opponentInfo, setOpponentInfo] = useState({});
 
   useEffect(() => {
+    // request gameInfo
     db.ref(`game_info/${rank}/${gid}`).get().then((snap)=>{
-        setGameInfo(snap.val());
+      setGameInfo(snap.val());
     });
   }, []);
 
   useEffect(() => {
-      if (!isEmpty(gameInfo)){
-          console.log(gameInfo)
-          const playerObj = gameInfo.player_object;
-          for (let playerId in playerObj) {
-              if (playerId === uid) setUserInfo(playerObj[playerId]);
-              else setOpponentInfo(playerObj[playerId]);
-          }
+    // check if gameInfo exist, and request userInfo 
+    // and opponentInfo using gameInfo.player_object
+    if (!isEmpty(gameInfo)){
+      console.log(gameInfo)
+      const playerObj = gameInfo.player_object;
+      for (let playerId in playerObj) {
+        if (playerId === uid) setUserInfo(playerObj[playerId]);
+        else setOpponentInfo(playerObj[playerId]);
       }
+    }
   }, [gameInfo]);
 
   return (
