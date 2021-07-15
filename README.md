@@ -16,13 +16,13 @@ React와 semantic-ui를 이용해 front-end를 구현했습니다.
 
 ## App structure
 
-#### Routing
+### Routing
 
 App.js에서 Auth 상태에 따라 AuthPage 또는 CustomRouter를 랜더링합니다.
 CustomRouter.js 에서 Status Object의 값에 따라 페이지를 랜더링합니다.
 status는 유저의 상황에 따라 Home / Waiting / Playing / End 의 값을 가집니다.
 
-#### Pages
+### Pages
 
 페이지는 status에 따라 유저가 보게되는 화면을 뜻합니다.
 
