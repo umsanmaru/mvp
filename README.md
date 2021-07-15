@@ -30,10 +30,10 @@ status는 유저의 상황에 따라 Home / Waiting / Playing / End 의 값을 �
 AuthPage: login 또는 signin을 하는 페이지입니다.
 
 ###### After login
-HomePage: login 후 매칭 전에 대기하는 페이지입니다.
-WaitingPage: 매칭 후 경기 시작 전 대기하는 페이지입니다.
-PlayingPage: 경기를 진행하는 페이지입니다.
-EndPage: 경기가 끝난 후 결과를 보여주는 페이지입니다.  
+HomePage: login 후 매칭 전에 대기하는 페이지입니다.  
+WaitingPage: 매칭 후 경기 시작 전 대기하는 페이지입니다.  
+PlayingPage: 경기를 진행하는 페이지입니다.  
+EndPage: 경기가 끝난 후 결과를 보여주는 페이지입니다.    
 
 #### Boards
 
