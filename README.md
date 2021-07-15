@@ -26,22 +26,37 @@ status는 유저의 상황에 따라 Home / Waiting / Playing / End 의 값을 �
 
 페이지는 status에 따라 유저가 보게되는 화면을 뜻합니다.
 
-###### Before login
-AuthPage: login 또는 signin을 하는 페이지입니다.
+#### AuthPage:
+login 또는 signin을 하는 페이지입니다.
 
-###### After login
-HomePage: login 후 매칭 전에 대기하는 페이지입니다.  
-WaitingPage: 매칭 후 경기 시작 전 대기하는 페이지입니다.  
-PlayingPage: 경기를 진행하는 페이지입니다.  
-EndPage: 경기가 끝난 후 결과를 보여주는 페이지입니다.    
+#### HomePage:
+login 후 매칭 전에 대기하는 페이지입니다.  
 
-#### Boards
+#### WaitingPage:
+매칭 후 경기 시작 전 대기하는 페이지입니다.  
+
+#### PlayingPage:
+경기를 진행하는 페이지입니다.  
+
+#### EndPage:
+경기가 끝난 후 결과를 보여주는 페이지입니다.    
+
+### Boards
 
 보드는 페이지를 구성하는 컴포넌트들입니다.
 
-RuleBoard: HomePage에서 규칙이 써진 컴포넌트를 랜더합니다.
-ButtonBoard: HomePage와 WaitingPage에서 유저 프로필과 각각 play버튼, ready버튼을 랜더합니다. 
-QuestionBoard: PlayingPage에서 문제, 선택지, 제출 버튼을 랜더합니다.
-UserBoard: PlayingPage에서 각 유저의 프로필, 채점 현황, 총점을 랜더합니다.
-TimerBoard: PlayingPage에서 타이머를 랜더합니다.
+#### RuleBoard:
+HomePage에서 규칙이 써진 컴포넌트를 랜더합니다.
+
+#### ButtonBoard:
+HomePage와 WaitingPage에서 유저 프로필과 각각 play버튼, ready버튼을 랜더합니다. 
+
+#### QuestionBoard:
+PlayingPage에서 문제, 선택지, 제출 버튼을 랜더합니다.
+
+#### UserBoard:
+PlayingPage에서 각 유저의 프로필, 채점 현황, 총점을 랜더합니다.
+
+#### TimerBoard:
+PlayingPage에서 타이머를 랜더합니다.
 
